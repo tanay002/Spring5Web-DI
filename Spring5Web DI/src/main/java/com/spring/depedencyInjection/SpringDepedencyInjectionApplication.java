@@ -15,11 +15,15 @@ public class SpringDepedencyInjectionApplication {
 	public static void main(String[] args) {
 	ApplicationContext ac=	SpringApplication.run(SpringDepedencyInjectionApplication.class, args);
     MyController myc=	ac.getBean(MyController.class);
+    
+    System.out.println("------Primiary Bean-----");
     System.out.println(myc.getGreetings());
     
+    System.out.println("--------Property Bean------");
     PropertyInjectedController proInjectedController=ac.getBean(PropertyInjectedController.class);
     System.out.println(proInjectedController.getGreetings());
     
+    System.out.println("----------Setter--------------");
     SetterInjectionController setterInjectionController=ac.getBean(SetterInjectionController.class);
     System.out.println(setterInjectionController.getGreetings());
    
@@ -27,6 +31,8 @@ public class SpringDepedencyInjectionApplication {
     /* Comment 3
       Spring will automatically detech it and inject in an instance of the greeting
     service into our constructor without having to specify an autowire annotation */
+
+    System.out.println("------Constructor---------------");
     ConstructorInjectionController constructorInjectionController=ac.getBean(ConstructorInjectionController.class);
     System.out.println(constructorInjectionController.getGreetings());
 	}
